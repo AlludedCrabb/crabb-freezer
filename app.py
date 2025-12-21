@@ -1,6 +1,6 @@
 import streamlit as st
 import sqlite3
-import q as pd
+import pandas as pd
 
 
 # --- DATABASE SETUP ---

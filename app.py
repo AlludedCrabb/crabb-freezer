@@ -1,13 +1,19 @@
-import streamlit as st
 import sqlite3
-import pandas as pd
+import os
 import urllib.parse
+import streamlit as st
+import pandas as pd
+
 
 # --- DATABASE SETUP ---
 # We cache this so we don't reconnect on every single click
 @st.cache_resource
 def init_db():
-    conn = sqlite3.connect("freezer_inventory.db", check_same_thread=False)
+    if os.path.exists("/tmp"):
+        db_path = os.path.join("/tmp", "freezer_inventory.db")
+    else:
+        db_path = "freezer_inventory.db"
+    conn = sqlite3.connect(db_path, check_same_thread=False)
     c = conn.cursor()
     # Added UNIQUE to item_name so the UPSERT logic actually works
     c.execute('''CREATE TABLE IF NOT EXISTS inventory 

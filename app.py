@@ -146,4 +146,4 @@ else:
 
 st.divider()
 st.caption("Shared Freezer App - Accessible by anyone with the link.")
-st.caption("Crabb-Freezer V-1.01")
+st.caption("Crabb-Freezer V-1.02")
